@@ -1,0 +1,33 @@
+.status
+  .status-header
+  .status-main
+    .user-status-main__list
+      %img{alt:"", class: "user-status-main__list--img", src: "/assets/cork-board.png" }
+      .user-status-form
+        .user-status-form__title
+          %h2 ダイエット目標
+        .user-status-form__text-box
+          %ul
+            %li
+              ◎スタート体重：
+            %li.user-weight
+              = @status.weight
+            %li
+              kg
+        .user-status-form__text-box
+          %ul
+            %li
+              ◎目標体重：
+            %li.user-weight
+              = @status.gole
+            %li
+              kg
+        .user-status-form__text-box
+          %p ◎自分ルール
+          .user-status-form__text-box--rule
+            = @status.rule    
+    .user-status-form__footer
+      = link_to user_path(current_user.id), class: 'link user-status__btn' do
+        戻る
+      = link_to edit_status_path(current_user.id), class: 'link user-status__btn' do
+        編集

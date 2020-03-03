@@ -1,0 +1,18 @@
+.group
+  .group-header
+    - if @group.errors.any?
+      %p.group-header__error ※入力情報に誤りがあります。
+  .group-main
+    = form_for @group do |form|
+      .group-main__list
+        %img{alt:"", class: "group-main__list--img", src: "/assets/cork-board.png" }
+        .group-form
+          .group-form__title
+            %h2 ダイエット期間に名前をつけよう！
+          .group-form__text-box
+            %p 名付けて・・・
+            = form.text_field :name, placeholder: "ex.自分大改造計画", class: "group-box form__weight-box"
+            %p.length (10文字以内)
+      .group-footer
+        .group-footer__submit
+          = form.submit "これでOK!!", class: 'group-submit__btn'

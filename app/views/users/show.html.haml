@@ -1,0 +1,21 @@
+.user
+  .user-header
+    = @name + "の部屋"
+  .user-main
+    .main__room
+      .main__room--image
+        %img{ src: "/assets/main-room.png", alt: "", class: "main__room--img" }
+        %img{ src: "/assets/big-girl.png", alt: "", class: "main__room--character" }
+
+  .user-form
+    .form__list
+      = link_to root_path, class: "form__list--btn" do
+        Top
+      = link_to user_statuses_path(current_user.id), class: "form__list--btn" do
+        目標確認
+      = link_to "#", class: "form__list--btn" do
+        つぶやく(工事中)
+      = link_to "#", class: "form__list--btn" do
+        進捗(工事）
+      = link_to "#", class: "form__list--btn" do
+        お気に(工事中)

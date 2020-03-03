@@ -1,0 +1,30 @@
+.status
+  .status-header
+    - if @status.errors.any?
+      %p.status-header__error ※入力情報に誤りがあります。
+  .status-main
+    = form_for @status do |form|
+      .status-main__list
+        %img{alt:"", class: "status-main__list--img", src: "/assets/cork-board.png" }
+        .status-form
+          .status-form__title
+            %h2 ダイエット目標をたてよう
+          .status-form__info
+            .status-form__text-box
+              = form.label :weight, "◎スタート体重：", class: 'form__ilabel'
+              = form.text_field :weight, class: "status-box form__weight-box"
+              = form.label :weight, "kg", class: 'form__ilabel'
+            .status-form__text-box
+              = form.label :gole, "◎目標体重：", class: 'form__ilabel'
+              = form.text_field :gole, class: "status-box form__gole--box"
+              = form.label :weight, "kg", class: 'form__ilabel'
+            %div{id: "id_rule", class:"status-form__text-box"}
+              %ul
+                %li
+                  = form.label :gole, "◎自分ルール", class: 'form__ilabel'
+                %li
+                  = form.text_area :rule, placeholder: "何か一つ、ルールを決めよう。" , rows: "5", class: "form__rule"
+            
+      .status-footer
+        .status-footer__submit
+          = form.submit "これでOK!!", class: 'status-submit__btn'

@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   
-  belongs_to :status
+  belongs_to :status, optional: true
   has_many :groups
   has_many :messages
   has_many :comments
@@ -10,5 +10,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
 end

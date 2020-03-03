@@ -1,0 +1,39 @@
+.top-page
+  .top-header
+    %img{alt:"", class: "top-header__logo", src: "/assets/dish.png" }
+  .top-contents
+    .top-contents__left
+      .top-contents__left--top
+        - if user_signed_in?
+          = link_to user_path(current_user.id), class: "link" do
+            .left-btn
+              %img{alt:"", class: "icon", src: "/assets/key-rock.png" }
+              %p.button-text マイページ
+          = link_to destroy_user_session_path, method: :delete, class: "link" do
+            .right-btn
+              %img{alt:"", class: "icon", src: "/assets/create-user.png" }
+              %p.button-text ログアウト
+        -else
+          = link_to new_user_session_path, class: "link" do
+            .left-btn
+              %img{alt:"", class: "icon", src: "/assets/key-open.png" }
+              %p.button-text ログイン
+          = link_to new_user_registration_path, class: "link" do
+            .right-btn
+              %img{alt:"", class: "icon", src: "/assets/create-user.png" }
+              %p.button-text 新規登録
+      .top-contents__left--low
+        = link_to "#", class: "link" do
+          .search-btn
+            %p.search-text ユーザー検索
+    .contents__right
+      %p 最近のつぶやき
+      .message-list
+        - @messages.each do |message|
+          .message-list__group
+            = link_to "#", class: "link" do
+              = truncate(message.message, length: 10, omission: "･･･")
+            .message-info
+              = message.user.name
+              = l message.created_at
+  .top-footer
